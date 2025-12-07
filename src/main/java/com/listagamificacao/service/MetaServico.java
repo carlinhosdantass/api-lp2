@@ -1,48 +1,43 @@
-package com.listagamificacao.servico;
+package com.listagamificacao.service;
 
-import com.listagamificacao.modelo.Meta;
-import com.listagamificacao.repositorio.MetaRepositorio;
-import com.listagamificacao.repositorio.JogadorRepositorio;
+import com.listagamificacao.model.Meta;
+import com.listagamificacao.repository.MetaRepositorio;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 public class MetaServico {
 
     private final MetaRepositorio metaRepositorio;
-    private final JogadorRepositorio jogadorRepositorio;
-    private final ConquistaServico conquistaServico;
 
-    public MetaServico(MetaRepositorio metaRepositorio, JogadorRepositorio jogadorRepositorio,
-                       ConquistaServico conquistaServico) {
+    public MetaServico(MetaRepositorio metaRepositorio) {
         this.metaRepositorio = metaRepositorio;
-        this.jogadorRepositorio = jogadorRepositorio;
-        this.conquistaServico = conquistaServico;
     }
 
-    public Meta criar(String titulo, String descricao, String prazo) {
-        return metaRepositorio.criar(titulo, descricao, prazo);
+    public Meta adicionar(Meta meta) {
+        return metaRepositorio.salvar(meta);
     }
 
-    public Iterable<Meta> listar() {
-        return metaRepositorio.listar().values();
+    public Meta buscarPorId(Long id) {
+        return metaRepositorio.buscarPorId(id);
     }
 
-    public String concluir(Long id) {
-        Meta meta = metaRepositorio.buscar(id);
+    public Collection<Meta> listar() {
+        return metaRepositorio.listar();
+    }
 
-        if (meta == null) {
-            return "Meta não encontrada.";
+    public Meta atualizar(Long id, Meta metaAtualizada) {
+        Meta metaExistente = metaRepositorio.buscarPorId(id);
+        if (metaExistente != null) {
+            metaExistente.setTitulo(metaAtualizada.getTitulo());
+            metaExistente.setPontos(metaAtualizada.getPontos());
+            metaRepositorio.salvar(metaExistente);
         }
+        return metaExistente;
+    }
 
-        meta.setStatus("concluída");
-
-        // Pontuação e histórico
-        jogadorRepositorio.getJogador().adicionarPontos(20);
-        jogadorRepositorio.getJogador().adicionarAoHistorico(meta);
-
-        // Checar conquistas
-        conquistaServico.verificarDesbloqueio();
-
-        return "Meta concluída!";
+    public void remover(Long id) {
+        metaRepositorio.remover(id);
     }
 }

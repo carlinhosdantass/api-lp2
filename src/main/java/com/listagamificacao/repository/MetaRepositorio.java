@@ -1,33 +1,36 @@
-package com.listagamificacao.repositorio;
+package com.listagamificacao.repository;
 
-import com.listagamificacao.modelo.Meta;
+import com.listagamificacao.model.Meta;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Repository
 public class MetaRepositorio {
 
-    private Map<Long, Meta> banco = new HashMap<>();
-    private long idAtual = 1;
+    private final Map<Long, Meta> tabela = new HashMap<>();
+    private final AtomicLong contadorId = new AtomicLong(0);
 
     public Meta salvar(Meta meta) {
-        banco.put(meta.getId(), meta);
+        if (meta.getId() == null) {
+            meta.setId(contadorId.incrementAndGet());
+        }
+        tabela.put(meta.getId(), meta);
         return meta;
     }
 
-    public Meta criar(String titulo, String descricao, String prazo) {
-        Meta meta = new Meta(idAtual++, titulo, descricao, prazo);
-        banco.put(meta.getId(), meta);
-        return meta;
+    public Meta buscarPorId(Long id) {
+        return tabela.get(id);
     }
 
-    public Map<Long, Meta> listar() {
-        return banco;
+    public Collection<Meta> listar() {
+        return tabela.values();
     }
 
-    public Meta buscar(Long id) {
-        return banco.get(id);
+    public void remover(Long id) {
+        tabela.remove(id);
     }
 }

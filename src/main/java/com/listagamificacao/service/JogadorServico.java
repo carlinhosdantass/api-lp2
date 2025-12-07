@@ -1,8 +1,10 @@
-package com.listagamificacao.servico;
+package com.listagamificacao.service;
 
-import com.listagamificacao.modelo.Jogador;
-import com.listagamificacao.repositorio.JogadorRepositorio;
+import com.listagamificacao.model.Jogador;
+import com.listagamificacao.repository.JogadorRepositorio;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 public class JogadorServico {
@@ -13,7 +15,19 @@ public class JogadorServico {
         this.jogadorRepositorio = jogadorRepositorio;
     }
 
-    public Jogador dados() {
-        return jogadorRepositorio.getJogador();
+    public Jogador adicionar(Jogador jogador) {
+        return jogadorRepositorio.salvar(jogador);
+    }
+
+    public Jogador buscarPorId(Long id) {
+        return jogadorRepositorio.buscarPorId(id);
+    }
+
+    public Collection<Jogador> listar() {
+        return jogadorRepositorio.listar();
+    }
+
+    public void remover(Long id) {
+        jogadorRepositorio.remover(id);
     }
 }

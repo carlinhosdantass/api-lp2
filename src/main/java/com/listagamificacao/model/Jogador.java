@@ -1,26 +1,28 @@
-package com.listagamificacao.modelo;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.listagamificacao.model;
 
 public class Jogador {
+    private Long id;
+    private String nome;
 
-    private int pontos = 0;
-    private int nivel = 1;
+    public Jogador() {}
 
-    private List<Meta> historico = new ArrayList<>();
-
-    public int getPontos() { return pontos; }
-    public int getNivel() { return nivel; }
-    public List<Meta> getHistorico() { return historico; }
-
-    // Adiciona pontos e recalcula nível
-    public void adicionarPontos(int valor) {
-        this.pontos += valor;
-        this.nivel = (pontos / 100) + 1; // simples
+    public Jogador(String nome) {
+        this.nome = nome;
     }
 
-    public void adicionarAoHistorico(Meta meta) {
-        historico.add(meta);
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }

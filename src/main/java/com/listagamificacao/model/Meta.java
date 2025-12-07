@@ -1,28 +1,38 @@
-package com.listagamificacao.modelo;
+package com.listagamificacao.model;
 
 public class Meta {
-
     private Long id;
     private String titulo;
-    private String descricao;
-    private String prazo;
+    private int pontos;
 
-    // pendente, andamento, concluida
-    private String status;
+    public Meta() {}
 
-    public Meta(Long id, String titulo, String descricao, String prazo) {
-        this.id = id;
+    public Meta(String titulo, int pontos) {
         this.titulo = titulo;
-        this.descricao = descricao;
-        this.prazo = prazo;
-        this.status = "pendente";
+        this.pontos = pontos;
     }
 
-    public Long getId() { return id; }
-    public String getTitulo() { return titulo; }
-    public String getDescricao() { return descricao; }
-    public String getPrazo() { return prazo; }
-    public String getStatus() { return status; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setStatus(String status) { this.status = status; }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
 }

@@ -1,35 +1,33 @@
-package com.listagamificacao.servico;
+package com.listagamificacao.service;
 
-import com.listagamificacao.modelo.Conquista;
-import com.listagamificacao.modelo.Jogador;
-import com.listagamificacao.repositorio.ConquistaRepositorio;
-import com.listagamificacao.repositorio.JogadorRepositorio;
+import com.listagamificacao.model.Conquista;
+import com.listagamificacao.repository.ConquistaRepositorio;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
 
 @Service
 public class ConquistaServico {
 
     private final ConquistaRepositorio conquistaRepositorio;
-    private final JogadorRepositorio jogadorRepositorio;
 
-    public ConquistaServico(ConquistaRepositorio conquistaRepositorio,
-                            JogadorRepositorio jogadorRepositorio) {
+    public ConquistaServico(ConquistaRepositorio conquistaRepositorio) {
         this.conquistaRepositorio = conquistaRepositorio;
-        this.jogadorRepositorio = jogadorRepositorio;
     }
 
-    public void verificarDesbloqueio() {
-        Jogador j = jogadorRepositorio.getJogador();
-
-        // conquista simples: 5 metas concluídas
-        if (j.getHistorico().size() == 5) {
-            conquistaRepositorio.adicionar(
-                new Conquista(1L, "Começo Brilhante", "Você concluiu 5 metas!")
-            );
-        }
+    public Conquista adicionar(Conquista conquista) {
+        return conquistaRepositorio.salvar(conquista);
     }
 
-    public Iterable<Conquista> listar() {
+    public Conquista buscarPorId(Long id) {
+        return conquistaRepositorio.buscarPorId(id);
+    }
+
+    public Collection<Conquista> listar() {
         return conquistaRepositorio.listar();
+    }
+
+    public void remover(Long id) {
+        conquistaRepositorio.remover(id);
     }
 }
