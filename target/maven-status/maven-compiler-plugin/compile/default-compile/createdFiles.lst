@@ -1,0 +1,13 @@
+com/listagamificacao/modelo/Conquista.class
+com/listagamificacao/repositorio/ConquistaRepositorio.class
+com/listagamificacao/modelo/Jogador.class
+com/listagamificacao/controlador/MetaControlador.class
+com/listagamificacao/controlador/JogadorControlador.class
+com/listagamificacao/servico/JogadorServico.class
+com/listagamificacao/ListaGamificacaoApplication.class
+com/listagamificacao/controlador/ConquistaControlador.class
+com/listagamificacao/repositorio/JogadorRepositorio.class
+com/listagamificacao/servico/ConquistaServico.class
+com/listagamificacao/modelo/Meta.class
+com/listagamificacao/repositorio/MetaRepositorio.class
+com/listagamificacao/servico/MetaServico.class

@@ -1,0 +1,13 @@
+/workspaces/api-lp2/src/main/java/com/listagamificacao/repository/MetaRepositorio.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/controller/JogadorControlador.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/model/Jogador.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/model/Conquista.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/repository/JogadorRepositorio.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/service/JogadorServico.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/service/ConquistaServico.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/service/MetaServico.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/model/Meta.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/controller/MetaControlador.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/controller/ConquistaControlador.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/repository/ConquistaRepositorio.java
+/workspaces/api-lp2/src/main/java/com/listagamificacao/ListaGamificacaoApplication.java
